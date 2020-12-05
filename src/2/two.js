@@ -7,14 +7,13 @@ function Two() {
 
   useEffect(() => {
     async function getEntries() {
-      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then(arr => arr.map(s => {
+      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then(arr => arr.map((s, si) => {
         const [first, second, third] = s.split(' ');
-        console.log(s, first, second, third);
         const [firstValue, secondValue] = first.split('-');
         const letter = second.substr(0, 1);
         const password = third;
 
-        return { firstValue, secondValue, letter, password, raw: s };
+        return { firstValue, secondValue, letter, password, raw: s, index: si };
       })).then(arr => setEntries(arr));
     }
 
@@ -60,7 +59,7 @@ function Two() {
           <Col>
             <h2>Entries</h2>
             {entries.map((e) => (
-              <div key={`result${e.password}`}>
+              <div key={`entry-${e.index}`}>
                 {e.raw}
               </div>
             ))}
@@ -79,7 +78,7 @@ function Two() {
               <Col>
                 <h3>Valid Passwords:</h3>
                 <div>{validPasswordsOne.map(vp => (
-                  <div key={`result${vp.password}`}>
+                  <div key={`result-one-${vp.index}`}>
                     {vp.raw}
                   </div>
                 ))}</div>
@@ -100,7 +99,7 @@ function Two() {
               <Col>
                 <h3>Valid Passwords:</h3>
                 <div>{validPasswordsTwo.map(vp => (
-                  <div key={`result${vp.password}`}>
+                  <div key={`result-two-${vp.index}`}>
                     {vp.raw}
                   </div>
                 ))}</div>
