@@ -45,12 +45,51 @@ function Four() {
     }
   }, [passports]);
 
-  const validPassports = useMemo(() => passports.filter((p) => {
+  const validPassportsOne = useMemo(() => passports.filter((p) => {
     if (p.byr && p.iyr && p.eyr && p.hgt && p.hcl && p.ecl && p.pid) {
       return true;
     }
     return false;
   }), [passports]);
+
+  const validPassportsTwo = useMemo(() => validPassportsOne.filter((p) => {
+    const validBirthYear = 1920 <= p.byr && p.byr <= 2002;
+    const validIssueYear = 2010 <= p.iyr && p.iyr <= 2020;
+    const validExpireYear = 2020 <= p.eyr && p.eyr <= 2030;
+    let validHeight = false;
+    if (p.hgt.endsWith('cm')) {
+      const height = parseInt(p.hgt.replace('cm', ''), 10) ?? 0;
+      if (150 <= height && height <= 193) {
+        validHeight = true;
+      }
+    } else if (p.hgt.endsWith('in')) {
+      const height = parseInt(p.hgt.replace('in', ''), 10) ?? 0;
+      if (59 <= height && height <= 76) {
+        validHeight = true;
+      }
+    }
+    let validHair = false;
+    if (p.hcl.startsWith('#')) {
+      const hairColor = parseInt(p.hcl.replace('#', ''), 16);
+      if (hairColor || hairColor === 0) {
+        validHair = true;
+      }
+    }
+    const validEyes = p.ecl === 'amb' || p.ecl === 'blu' || p.ecl === 'brn' || p.ecl === 'gry' || p.ecl === 'grn' || p.ecl === 'hzl' || p.ecl === 'oth';
+    const validPassportId = p.pid.split('').length === 9;
+    if (
+      validBirthYear && 
+      validIssueYear &&
+      validExpireYear &&
+      validHeight &&
+      validHair &&
+      validEyes &&
+      validPassportId
+      ) {
+      return true;
+    }
+    return false;
+  }), [validPassportsOne]);
 
   return (
     <Row>
@@ -70,7 +109,7 @@ function Four() {
                   </Col>
                   <Col>
                     <h3>Valid Count:</h3>
-                    <div>{validPassports.length}</div>
+                    <div>{validPassportsOne.length}</div>
                   </Col>
                 </Row>
               </Col>
@@ -78,6 +117,10 @@ function Four() {
                 <Row>
                   <Col>
                     <h2>Part 2</h2>
+                  </Col>
+                  <Col>
+                    <h3>Valid Count:</h3>
+                    <div>{validPassportsTwo.length}</div>
                   </Col>
                 </Row>
               </Col>
