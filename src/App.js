@@ -6,6 +6,7 @@ import Home from './home';
 import NotFound from './notFound';
 import One from './1/one';
 import Two from './2/two';
+import Three from './3/three';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <NavDropdown title="Days">
             <NavDropdown.Item href="/1">One</NavDropdown.Item>
             <NavDropdown.Item href="/2">Two</NavDropdown.Item>
+            <NavDropdown.Item href="/3">Three</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>
@@ -28,6 +30,7 @@ function App() {
         <Switch>
           <Route path="/1" component={One} />
           <Route path="/2" component={Two} />
+          <Route path="/3" component={Three} />
           <Route exact path="/" component={Home} />
           <Route path="*" component={NotFound} />
         </Switch>
