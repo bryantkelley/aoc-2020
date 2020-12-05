@@ -15,7 +15,7 @@ function One() {
     }
   }, [entries]);
 
-  const matchingValues = useMemo(() => {
+  const matchingValuesOne = useMemo(() => {
     for (let i = 0; i < entries.length; i++) {
       for (let j = i; j < entries.length; j++) {
         if (entries[i] + entries[j] === 2020) {
@@ -26,37 +26,75 @@ function One() {
     return [];
   }, [entries]);
 
-  const result = useMemo(() => {
-    if (matchingValues.length === 2) {
-      return matchingValues[0] * matchingValues[1];
+  const resultOne = useMemo(() => {
+    if (matchingValuesOne.length === 2) {
+      return matchingValuesOne[0] * matchingValuesOne[1];
     }
     return '';
-  }, [matchingValues])
+  }, [matchingValuesOne]);
+
+  const matchingValuesTwo = useMemo(() => {
+    for (let i = 0; i < entries.length; i++) {
+      for (let j = i; j < entries.length; j++) {
+        for (let k = j; k < entries.length; k++) {
+          if (entries[i] + entries[j] + entries[k] === 2020) {
+            return [entries[i], entries[j], entries[k]];
+          }
+        }
+      }
+    }
+    return [];
+  }, [entries]);
+
+  const resultTwo = useMemo(() => {
+    if (matchingValuesTwo.length === 3) {
+      return matchingValuesTwo[0] * matchingValuesTwo[1] * matchingValuesTwo[2];
+    }
+    return '';
+  }, [matchingValuesTwo]);
 
   return (
     <Row>
       <Col>
         <Row>
           <Col>
-            <div>Day One</div>
-          </Col>
-          <Col>
-            <div>Matching Entries:</div>
-            <div>{matchingValues.map(mv => (<div>{mv}</div>))}</div>
-          </Col>
-          <Col>
-            <div>Result</div>
-            <div>{result}</div>
+            <h1>Day One</h1>
           </Col>
         </Row>
         <Row>
           <Col>
-            Entries
+            <h2>Part 1</h2>
+          </Col>
+          <Col>
+            <h3>Matching Entries:</h3>
+            <div>{matchingValuesOne.map(mv => (<div key={`result${mv}`}>{mv}</div>))}</div>
+          </Col>
+          <Col>
+            <h3>Result</h3>
+            <div>{resultOne}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Part 2</h2>
+          </Col>
+          <Col>
+            <h3>Matching Entries:</h3>
+            <div>{matchingValuesOne.map(mv => (<div key={`result${mv}`}>{mv}</div>))}</div>
+          </Col>
+          <Col>
+            <h3>Result</h3>
+            <div>{resultTwo}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Entries</h2>
             {entries.map((e) => (
-              <Row key={e}>
-                <Col>{e}</Col>
-              </Row>
-            ))}
+            <Row key={`entry${e}`}>
+              <Col>{e}</Col>
+            </Row>
+          ))}
           </Col>
         </Row>
       </Col>
