@@ -12,14 +12,13 @@ import Six from './6/six';
 function App() {
   return (
     <div>
-      <title>Bryant's AOC 2020</title>
-      <Navbar bg="danger" variant="dark">
-        <Navbar.Brand href="home">
+      <Navbar bg="danger" variant="dark" sticky="top">
+        <Navbar.Brand href="https://bryantkelley.com">
           <FontAwesomeIcon icon={faSnowflake} />
           {' '}
-          AOC-2020
+          Bryant Kelley
         </Navbar.Brand>
-        <Nav defaultActiveKey="/">
+        <Nav>
           <Nav.Link href="https://github.com/bryantkelley/aoc-2020">GitHub</Nav.Link>
           <Nav.Link href="https://twitter.com/_bryantkelley">Twitter</Nav.Link>
         </Nav>
