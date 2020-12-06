@@ -8,6 +8,7 @@ import One from './1/one';
 import Two from './2/two';
 import Three from './3/three';
 import Four from './4/four';
+import Five from './5/five';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <NavDropdown.Item href="/2">Two</NavDropdown.Item>
             <NavDropdown.Item href="/3">Three</NavDropdown.Item>
             <NavDropdown.Item href="/4">Four</NavDropdown.Item>
+            <NavDropdown.Item href="/5">Five</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar>
@@ -34,6 +36,7 @@ function App() {
           <Route path="/2" component={Two} />
           <Route path="/3" component={Three} />
           <Route path="/4" component={Four} />
+          <Route path="/5" component={Five} />
           <Route exact path="/" component={Home} />
           <Route path="*" component={NotFound} />
         </Switch>

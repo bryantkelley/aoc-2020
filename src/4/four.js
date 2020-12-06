@@ -78,14 +78,14 @@ function Four() {
     const validEyes = p.ecl === 'amb' || p.ecl === 'blu' || p.ecl === 'brn' || p.ecl === 'gry' || p.ecl === 'grn' || p.ecl === 'hzl' || p.ecl === 'oth';
     const validPassportId = p.pid.split('').length === 9;
     if (
-      validBirthYear && 
+      validBirthYear &&
       validIssueYear &&
       validExpireYear &&
       validHeight &&
       validHair &&
       validEyes &&
       validPassportId
-      ) {
+    ) {
       return true;
     }
     return false;
@@ -103,32 +103,28 @@ function Four() {
           <Col>
             <Row>
               <Col>
-                <Row>
-                  <Col>
-                    <h2>Part 1</h2>
-                  </Col>
-                  <Col>
-                    <h3>Valid Count:</h3>
-                    <div>{validPassportsOne.length}</div>
-                  </Col>
-                </Row>
+                <h2>Part 1</h2>
               </Col>
               <Col>
-                <Row>
-                  <Col>
-                    <h2>Part 2</h2>
-                  </Col>
-                  <Col>
-                    <h3>Valid Count:</h3>
-                    <div>{validPassportsTwo.length}</div>
-                  </Col>
-                </Row>
+                <h3>Valid Count:</h3>
+                <div>{validPassportsOne.length}</div>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <h2>Part 2</h2>
+              </Col>
+              <Col>
+                <h3>Valid Count:</h3>
+                <div>{validPassportsTwo.length}</div>
               </Col>
             </Row>
           </Col>
         </Row>
-      </Col >
-    </Row >
+      </Col>
+    </Row>
   );
 }
 
