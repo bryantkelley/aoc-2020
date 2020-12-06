@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import raw from './sixInput.txt';
 
@@ -7,13 +7,7 @@ function Six() {
 
   useEffect(() => {
     async function getEntries() {
-      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then(arr => arr.map((s, si) => {
-        // const binary = s.replace(/F/g, '0').replace(/B/g, '1').replace(/L/g, '0').replace(/R/g, '1');
-        // const row = parseInt(s.substr(0, 7).replace(/F/g, '0').replace(/B/g, '1').replace(/L/g, '0').replace(/R/g, '1'), 2);
-        // const column = parseInt(s.substr(7, 10).replace(/F/g, '0').replace(/B/g, '1').replace(/L/g, '0').replace(/R/g, '1'), 2);
-        // const seat = row * 8 + column;
-        // return { binary, row, column, seat, raw: s, index: si };
-      })).then(arr => setEntries(arr));
+      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then(arr => setEntries(arr));
     }
 
     if (!entries.length) {
@@ -30,13 +24,6 @@ function Six() {
           </Col>
         </Row>
         <Row>
-          {/* <Col>
-            {entries.map(e => (
-              <div key={e.index}>
-                <code>{e.raw}</code>
-              </div>
-            ))}
-          </Col> */}
           <Col>
             <Row>
               <Col>
