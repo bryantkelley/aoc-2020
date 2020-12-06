@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHollyBerry, faGlassWhiskey } from '@fortawesome/free-solid-svg-icons';
 import raw from './twoInput.txt';
 
 function Two() {
@@ -52,63 +54,39 @@ function Two() {
       <Col>
         <Row>
           <Col>
-            <h1>Day Two</h1>
+            <h2>Day Two</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Entries</h2>
-            {entries.map((e) => (
-              <div key={`entry-${e.index}`}>
-                {e.raw}
-              </div>
-            ))}
+            <h3>Part 1</h3>
           </Col>
           <Col>
-            <Row>
-              <Col>
-                <h2>Part 1</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h3>Count</h3>
-                <div>{validPasswordsOne.length}</div>
-              </Col>
-              <Col>
-                <h3>Valid Passwords:</h3>
-                <div>{validPasswordsOne.map(vp => (
-                  <div key={`result-one-${vp.index}`}>
-                    {vp.raw}
-                  </div>
-                ))}</div>
-              </Col>
-            </Row>
+            <h4>Valid Password Count</h4>
+            <h5>{validPasswordsOne.length}</h5>
           </Col>
           <Col>
-            <Row>
-              <Col>
-                <h2>Part 2</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h3>Count</h3>
-                <div>{validPasswordsTwo.length}</div>
-              </Col>
-              <Col>
-                <h3>Valid Passwords:</h3>
-                <div>{validPasswordsTwo.map(vp => (
-                  <div key={`result-two-${vp.index}`}>
-                    {vp.raw}
-                  </div>
-                ))}</div>
-              </Col>
-            </Row>
+            <h4>
+              <FontAwesomeIcon icon={faHollyBerry} />
+            </h4>
           </Col>
         </Row>
-      </Col >
-    </Row >
+        <Row>
+          <Col>
+            <h3>Part 2</h3>
+          </Col>
+          <Col>
+            <h4>Valid Password Count</h4>
+            <h5>{validPasswordsTwo.length}</h5>
+          </Col>
+          <Col>
+            <h4>
+              <FontAwesomeIcon icon={faGlassWhiskey} />
+            </h4>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 }
 

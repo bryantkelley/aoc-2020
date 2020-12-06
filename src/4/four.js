@@ -99,35 +99,35 @@ function Four() {
       <Col>
         <Row>
           <Col>
-            <h1>Day Four</h1>
+            <h2>Day Four</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 1</h2>
+            <h3>Part 1</h3>
           </Col>
           <Col>
-            <h3>Valid Count:</h3>
-            <div>{validPassportsOne.length}</div>
+            <h4>Valid Count:</h4>
+            <h5>{validPassportsOne.length}</h5>
           </Col>
           <Col>
-            <h3>
+            <h4>
               <FontAwesomeIcon icon={faCandyCane} />
-            </h3>
+            </h4>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 2</h2>
+            <h3>Part 2</h3>
           </Col>
           <Col>
-            <h3>Valid Count:</h3>
-            <div>{validPassportsTwo.length}</div>
+            <h4>Valid Count:</h4>
+            <h5>{validPassportsTwo.length}</h5>
           </Col>
           <Col>
-            <h3>
+            <h4>
               <FontAwesomeIcon icon={faMugHot} />
-            </h3>
+            </h4>
           </Col>
         </Row>
       </Col>

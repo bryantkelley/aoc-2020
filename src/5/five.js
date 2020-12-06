@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSnowflake, faTree } from '@fortawesome/free-solid-svg-icons';
 import raw from './fiveInput.txt';
 
 function Five() {
@@ -47,34 +49,35 @@ function Five() {
       <Col>
         <Row>
           <Col>
-            <h1>Day Five</h1>
+            <h2>Day Five</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 1</h2>
+            <h3>Part 1</h3>
           </Col>
           <Col>
-            <h3>Highest Seat ID:</h3>
-            <div>{highestSeat.seat}</div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>Part 2</h2>
+            <h4>Highest Seat ID:</h4>
+            <h5>{highestSeat.seat}</h5>
           </Col>
           <Col>
-            <h3>My Seat:</h3>
-            <div>{missingSeatID}</div>
+            <h4>
+              <FontAwesomeIcon icon={faTree} />
+            </h4>
           </Col>
         </Row>
         <Row>
           <Col>
-            {entries.map(e => (
-              <div key={e.index}>
-                <code>{e.raw}</code>
-              </div>
-            ))}
+            <h3>Part 2</h3>
+          </Col>
+          <Col>
+            <h4>My Seat:</h4>
+            <h5>{missingSeatID}</h5>
+          </Col>
+          <Col>
+            <h4>
+              <FontAwesomeIcon icon={faSnowflake} />
+            </h4>
           </Col>
         </Row>
       </Col >

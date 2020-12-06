@@ -20,21 +20,21 @@ function Six() {
       <Col>
         <Row>
           <Col>
-            <h1>Day Five</h1>
+            <h2>Day Six</h2>
           </Col>
         </Row>
         <Row>
           <Col>
             <Row>
               <Col>
-                <h2>Part 1</h2>
+                <h3>Part 1</h3>
               </Col>
             </Row>
           </Col>
           <Col>
             <Row>
               <Col>
-                <h2>Part 2</h2>
+                <h3>Part 2</h3>
               </Col>
             </Row>
           </Col>

@@ -58,43 +58,33 @@ function One() {
       <Col>
         <Row>
           <Col>
-            <h1>Day One</h1>
+            <h2>Day One</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 1</h2>
+            <h3>Part 1</h3>
           </Col>
           <Col>
-            <h3>Matching Entries:</h3>
-            <div>{matchingValuesOne.map(mv => (<div key={`result${mv}`}>{mv}</div>))}</div>
+            <h4>Matching Entries:</h4>
+            <div>{matchingValuesOne.map(mv => (<h5 key={`result${mv}`}>{mv}</h5>))}</div>
           </Col>
           <Col>
-            <h3>Result</h3>
-            <div>{resultOne}</div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>Part 2</h2>
-          </Col>
-          <Col>
-            <h3>Matching Entries:</h3>
-            <div>{matchingValuesOne.map(mv => (<div key={`result${mv}`}>{mv}</div>))}</div>
-          </Col>
-          <Col>
-            <h3>Result</h3>
-            <div>{resultTwo}</div>
+            <h4>Result</h4>
+            <h5>{resultOne}</h5>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Entries</h2>
-            {entries.map((e) => (
-            <Row key={`entry${e}`}>
-              <Col>{e}</Col>
-            </Row>
-          ))}
+            <h3>Part 2</h3>
+          </Col>
+          <Col>
+            <h4>Matching Entries:</h4>
+            <div>{matchingValuesOne.map(mv => (<h5 key={`result${mv}`}>{mv}</h5>))}</div>
+          </Col>
+          <Col>
+            <h4>Result</h4>
+            <h5>{resultTwo}</h5>
           </Col>
         </Row>
       </Col>

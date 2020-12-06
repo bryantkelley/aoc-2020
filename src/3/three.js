@@ -68,48 +68,38 @@ function Three() {
       <Col>
         <Row>
           <Col>
-            <h1>Day Three</h1>
+            <h2>Day Three</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 1</h2>
+            <h3>Part 1</h3>
           </Col>
           <Col>
-            <h3>Trees Hit</h3>
-            <div>{treesHitOne}</div>
+            <h4>Trees Hit</h4>
+            <h5>{treesHitOne}</h5>
           </Col>
           <Col>
-            <h3>
+            <h4>
               <FontAwesomeIcon icon={faSleigh} />
-            </h3>
+            </h4>
           </Col>
         </Row>
         <Row>
           <Col>
-            <h2>Part 2</h2>
+            <h3>Part 2</h3>
           </Col>
           <Col>
-            <h3>Trees Hit</h3>
+            <h4>Trees Hit</h4>
             {treesHitTwo.map(th => (
-              <div key={`result-two-${th.index}`}>
-                {`(${th.slope.x},${th.slope.y}) ${th.hitCount} ${th.missCount}`}
-              </div>
+              <h5 key={`result-two-${th.index}`}>
+                {`${th.hitCount} for slope (${th.slope.x},${th.slope.y})`}
+              </h5>
             ))}
           </Col>
           <Col>
-            <h3>Result</h3>
-            <div>{resultTwo}</div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>Entries</h2>
-            {entries.map(e => (
-              <div key={e.index}>
-                <code>{e.raw}</code>
-              </div>
-            ))}
+            <h4>Result</h4>
+            <h5>{resultTwo}</h5>
           </Col>
         </Row>
       </Col >
