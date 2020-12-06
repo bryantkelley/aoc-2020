@@ -32,7 +32,7 @@ function Five() {
   }, [entries]);
 
   const missingSeatID = useMemo(() => {
-    const sorted = entries.sort(function(a, b) { return a.seat - b.seat });
+    const sorted = entries.sort(function (a, b) { return a.seat - b.seat });
     let mySeat = '';
     for (let i = 1; i < sorted.length; i++) {
       if (sorted[i].seat - sorted[i - 1].seat === 2) {
@@ -40,7 +40,7 @@ function Five() {
       }
     }
     return mySeat;
-}, [entries]);
+  }, [entries]);
 
   return (
     <Row>
@@ -52,37 +52,33 @@ function Five() {
         </Row>
         <Row>
           <Col>
+            <h2>Part 1</h2>
+          </Col>
+          <Col>
+            <h3>Highest Seat ID:</h3>
+            <div>{highestSeat.seat}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Part 2</h2>
+          </Col>
+          <Col>
+            <h3>My Seat:</h3>
+            <div>{missingSeatID}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             {entries.map(e => (
               <div key={e.index}>
                 <code>{e.raw}</code>
               </div>
             ))}
           </Col>
-          <Col>
-            <Row>
-              <Col>
-                <h2>Part 1</h2>
-              </Col>
-              <Col>
-                <h3>Highest Seat ID:</h3>
-                <div>{highestSeat.seat}</div>
-              </Col>
-            </Row>
-          </Col>
-          <Col>
-            <Row>
-              <Col>
-                <h2>Part 2</h2>
-              </Col>
-              <Col>
-                <h3>Your Seat:</h3>
-                <div>{missingSeatID}</div>
-              </Col>
-            </Row>
-          </Col>
         </Row>
-      </Col>
-    </Row>
+      </Col >
+    </Row >
   );
 }
 

@@ -1,5 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSleigh } from '@fortawesome/free-solid-svg-icons';
+
 import raw from './threeInput.txt';
 
 function Three() {
@@ -70,51 +73,43 @@ function Three() {
         </Row>
         <Row>
           <Col>
+            <h2>Part 1</h2>
+          </Col>
+          <Col>
+            <h3>Trees Hit</h3>
+            <div>{treesHitOne}</div>
+          </Col>
+          <Col>
+            <h3>
+              <FontAwesomeIcon icon={faSleigh} />
+            </h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Part 2</h2>
+          </Col>
+          <Col>
+            <h3>Trees Hit</h3>
+            {treesHitTwo.map(th => (
+              <div key={`result-two-${th.index}`}>
+                {`(${th.slope.x},${th.slope.y}) ${th.hitCount} ${th.missCount}`}
+              </div>
+            ))}
+          </Col>
+          <Col>
+            <h3>Result</h3>
+            <div>{resultTwo}</div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Entries</h2>
             {entries.map(e => (
               <div key={e.index}>
                 <code>{e.raw}</code>
               </div>
             ))}
-          </Col>
-          <Col>
-            <Row>
-              <Col>
-                <Row>
-                  <Col>
-                    <h2>Part 1</h2>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <h3>Trees Hit</h3>
-                    <div>{treesHitOne}</div>
-                  </Col>
-                </Row>
-              </Col>
-              <Col>
-                <Row>
-                  <Col>
-                    <h2>Part 2</h2>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <h3>Trees Hit</h3>
-                    {treesHitTwo.map(th => (
-                      <div key={`result-two-${th.index}`}>
-                        {`(${th.slope.x},${th.slope.y}) ${th.hitCount} ${th.missCount}`}
-                      </div>
-                    ))}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <h3>Result</h3>
-                    <div>{resultTwo}</div>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
           </Col>
         </Row>
       </Col >

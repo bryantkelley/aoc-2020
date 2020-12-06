@@ -1,5 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCandyCane, faMugHot } from '@fortawesome/free-solid-svg-icons';
+
 import raw from './fourInput.txt';
 
 function Four() {
@@ -101,26 +104,30 @@ function Four() {
         </Row>
         <Row>
           <Col>
-            <Row>
-              <Col>
-                <h2>Part 1</h2>
-              </Col>
-              <Col>
-                <h3>Valid Count:</h3>
-                <div>{validPassportsOne.length}</div>
-              </Col>
-            </Row>
+            <h2>Part 1</h2>
           </Col>
           <Col>
-            <Row>
-              <Col>
-                <h2>Part 2</h2>
-              </Col>
-              <Col>
-                <h3>Valid Count:</h3>
-                <div>{validPassportsTwo.length}</div>
-              </Col>
-            </Row>
+            <h3>Valid Count:</h3>
+            <div>{validPassportsOne.length}</div>
+          </Col>
+          <Col>
+            <h3>
+              <FontAwesomeIcon icon={faCandyCane} />
+            </h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Part 2</h2>
+          </Col>
+          <Col>
+            <h3>Valid Count:</h3>
+            <div>{validPassportsTwo.length}</div>
+          </Col>
+          <Col>
+            <h3>
+              <FontAwesomeIcon icon={faMugHot} />
+            </h3>
           </Col>
         </Row>
       </Col>
