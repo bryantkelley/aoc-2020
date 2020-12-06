@@ -80,7 +80,7 @@ function One() {
           </Col>
           <Col>
             <h4>Matching Entries:</h4>
-            <div>{matchingValuesOne.map(mv => (<h5 key={`result${mv}`}>{mv}</h5>))}</div>
+            <div>{matchingValuesTwo.map(mv => (<h5 key={`result${mv}`}>{mv}</h5>))}</div>
           </Col>
           <Col>
             <h4>Result</h4>
