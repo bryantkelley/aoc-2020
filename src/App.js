@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
