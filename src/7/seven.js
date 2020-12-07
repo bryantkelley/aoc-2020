@@ -79,12 +79,10 @@ function Seven() {
 
   const insideBags = useMemo(() => {
     if (entries.length) {
-      console.log(entries);
       function findInsideBags(bag) {
         let count = 0;
         if (bag.rules.length) {
           bag.rules.forEach((rule) => {
-            console.log(rule.count, rule.color);
             count = count + rule.count * findInsideBags(entries.find(entry => entry.color === rule.color));
           });
         }
