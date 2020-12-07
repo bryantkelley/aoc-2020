@@ -8,6 +8,7 @@ import Three from './3/three';
 import Four from './4/four';
 import Five from './5/five';
 import Six from './6/six';
+import Seven from './7/seven';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Four />
         <Five />
         <Six />
+        <Seven />
       </Container>
     </div>
   );
