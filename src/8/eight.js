@@ -15,34 +15,6 @@ function Eight() {
           return { instruction, value, timesHit: 0, index: ri };
         });
       }).then((arr) => {
-        return arr.map((row) => {
-          const parents = arr.filter((pp) => {
-            if (row.index > 0) {
-              if (pp.instruction !== 'jmp' && pp.index === row.index - 1) {
-                return true;
-              }
-              if (pp.instruction === 'jmp' && parseInt(pp.value, 10) === pp.index + row.index) {
-                return true;
-              }
-            }
-            return false;
-          });
-
-          const potentialParents = arr.filter((pp) => {
-            if (row.index > 0) {
-              if (pp.instruction === 'jmp' && pp.index === row.index - 1) {
-                return true;
-              }
-              if (pp.instruction === 'nop' && parseInt(pp.value, 10) === pp.index + row.index) {
-                return true;
-              }
-            }
-            return false;
-          });
-
-          return { ...row, parents, potentialParents };
-        });
-      }).then((arr) => {
         setEntries(arr);
       });
     }
