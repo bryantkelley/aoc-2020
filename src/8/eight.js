@@ -126,6 +126,7 @@ function Eight() {
           } else {
             setResultTwo(accumulator);
             continuing = false;
+            break;
           }
         }
       }
