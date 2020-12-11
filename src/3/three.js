@@ -2,8 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSleigh } from '@fortawesome/free-solid-svg-icons';
-
-import raw from './threeInput.txt';
+import raw from './input.txt';
 
 function Three() {
   const [entries, setEntries] = useState([]);

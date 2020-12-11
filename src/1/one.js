@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
-import raw from './oneInput.txt';
+import raw from './input.txt';
 
 function One() {
   const [entries, setEntries] = useState([]);

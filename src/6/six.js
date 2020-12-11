@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnowman, faHollyBerry } from '@fortawesome/free-solid-svg-icons';
-import raw from './sixInput.txt';
+import raw from './input.txt';
 
 function Six() {
   const [entries, setEntries] = useState([]);

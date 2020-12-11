@@ -2,8 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCandyCane, faMugHot } from '@fortawesome/free-solid-svg-icons';
-
-import raw from './fourInput.txt';
+import raw from './input.txt';
 
 function Four() {
   const [passports, setPassports] = useState([]);
