@@ -57,7 +57,7 @@ function Five() {
             <h3>Part 1</h3>
           </Col>
           <Col>
-            <h4>Highest Seat ID:</h4>
+            <h4>Highest Seat ID</h4>
             <h5>{highestSeat.seat}</h5>
           </Col>
           <Col>
@@ -71,7 +71,7 @@ function Five() {
             <h3>Part 2</h3>
           </Col>
           <Col>
-            <h4>My Seat:</h4>
+            <h4>My Seat</h4>
             <h5>{missingSeatID}</h5>
           </Col>
           <Col>
