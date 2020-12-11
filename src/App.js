@@ -13,6 +13,7 @@ import Seven from './7/seven';
 import Eight from './8/eight';
 import Nine from './9/nine';
 import Ten from './10/ten';
+import Eleven from './11/eleven';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Eight />
         <Nine />
         <Ten />
+        <Eleven />
       </Container>
     </div>
   );
