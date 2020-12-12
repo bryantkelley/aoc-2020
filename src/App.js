@@ -3,18 +3,19 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
 import Home from './home';
-import One from './1/one';
-import Two from './2/two';
-import Three from './3/three';
-import Four from './4/four';
-import Five from './5/five';
-import Six from './6/six';
-import Seven from './7/seven';
-import Eight from './8/eight';
-import Nine from './9/nine';
+import One from './01/one';
+import Two from './02/two';
+import Three from './03/three';
+import Four from './04/four';
+import Five from './05/five';
+import Six from './06/six';
+import Seven from './07/seven';
+import Eight from './08/eight';
+import Nine from './09/nine';
 import Ten from './10/ten';
 import Eleven from './11/eleven';
 import Twelve from './12/twelve';
+import Thirteen from './13/thirteen';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Ten />
         <Eleven />
         <Twelve />
+        <Thirteen />
       </Container>
     </div>
   );
