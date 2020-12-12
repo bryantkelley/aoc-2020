@@ -103,12 +103,8 @@ function Eleven() {
     if (!entries.length) {
       return '';
     }
-    // 2449 is too high
-    
-    console.log(entries);
 
     let floorplan = [entries];
-    console.log(floorplan);
     let changing = true;
 
     while (changing) {
