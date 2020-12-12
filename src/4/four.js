@@ -106,7 +106,7 @@ function Four() {
             <h3>Part 1</h3>
           </Col>
           <Col>
-            <h4>Valid Count:</h4>
+            <h4>Valid Count</h4>
             <h5>{validPassportsOne.length}</h5>
           </Col>
           <Col>
@@ -120,7 +120,7 @@ function Four() {
             <h3>Part 2</h3>
           </Col>
           <Col>
-            <h4>Valid Count:</h4>
+            <h4>Valid Count</h4>
             <h5>{validPassportsTwo.length}</h5>
           </Col>
           <Col>
