@@ -82,6 +82,69 @@ function Twelve() {
       return '';
     }
     
+    let x = 0; // east/west distance
+    let y = 0; // north/south distance
+    let wx = 10;
+    let wy = 1;
+
+    entries.forEach((line) => {
+      const { action, value } = line;
+      if (action === 'N') {
+        // Move +y
+        wy = wy + value;
+      }
+      if (action === 'S') {
+        // Move -y
+        wy = wy - value;
+      }
+      if (action === 'E') {
+        // Move +x
+        wx = wx + value;
+      }
+      if (action === 'W') {
+        // Move -x
+        wx = wx - value;
+      }
+      if (action === 'L') {
+        // Rotate Anti-Clockwise
+        const difference = Math.abs(parseInt(value /90) % 4);
+        if (difference === 1) {
+          const oldWX = wx;
+          wx = -wy;
+          wy = oldWX;
+        } else if (difference === 2) {
+          wx = -wx;
+          wy = -wy;
+        } else if (difference === 3) {
+          const oldWX = wx;
+          wx = wy;
+          wy = -oldWX;
+        }
+      }
+      if (action === 'R') {
+        // Rotate Clockwise
+        const difference = Math.abs(parseInt(value /90) % 4);
+        if (difference === 3) {
+          const oldWX = wx;
+          wx = -wy;
+          wy = oldWX;
+        } else if (difference === 2) {
+          wx = -wx;
+          wy = -wy;
+        } else if (difference === 1) {
+          const oldWX = wx;
+          wx = wy;
+          wy = -oldWX;
+        }
+      }
+      if (action === 'F') {
+        // Move in direction
+        x = x + value * wx;
+        y = y + value * wy;
+      }
+    });
+
+    return Math.abs(x) + Math.abs(y);
   }, [entries]);
 
   return (
@@ -111,7 +174,7 @@ function Twelve() {
             <h3>Part 2</h3>
           </Col>
           <Col>
-            <h4> </h4>
+            <h4>Distance from Start</h4>
             <h5>{resultTwo}</h5>
           </Col>
           <Col>
