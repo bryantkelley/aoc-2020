@@ -5,33 +5,78 @@ import { faCandyCane, faGifts } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Thirteen() {
-  const [entries, setEntries] = useState([]);
+  const [arrival, setArrival] = useState(0);
+  const [buses, setBuses] = useState([])
 
   useEffect(() => {
     async function getEntries() {
-      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then((arr) => {
-        setEntries(arr);
+      fetch(raw).then(r => r.text()).then((text) => {
+        const [arr, newBuses] = text.split('\n');
+        const filteredBuses = newBuses.split(',');
+        setArrival(parseInt(arr, 10));
+        setBuses(filteredBuses);
       });
     }
 
-    if (!entries.length) {
+    if (!buses.length) {
       getEntries();
     }
-  }, [entries]);
+  }, [buses]);
 
   const resultOne = useMemo(() => {
-    if (!entries.length) {
+    if (!buses.length) {
       return '';
     }
 
-  }, [entries]);
+    const filteredBuses = buses.filter(bus => bus !== 'x').map(bus => parseInt(bus, 10))
+
+    let found = false;
+    let currentTime = arrival;
+    let busId = 0;
+    while (!found) {
+      let theOne = 0;
+      let busFound = false;
+      for (let i = 0; i < filteredBuses.length; i++) {
+        if (currentTime % filteredBuses[i] === 0) {
+          busFound = true;
+          theOne = filteredBuses[i];
+        }
+      }
+
+      if (busFound) {
+        found = true;
+        busId = theOne;
+      } else {
+        currentTime = currentTime + 1;
+      }
+    }
+
+    return busId * (currentTime - arrival);
+
+  }, [buses, arrival]);
 
   const resultTwo = useMemo(() => {
-    if (!entries.length) {
+    if (!buses.length) {
       return '';
     }
-    
-  }, [entries]);
+
+    const entries = buses.map((bus, bi) => ({
+      value: bus === 'x' ? 'x' : parseInt(bus, 10),
+      index: bi,
+    })).filter(b => b.value !== 'x');
+
+    let currentTime = entries[0].value;
+    let step = entries[0].value;
+    for (let i = 1; i < entries.length; i++) {
+      const { value, index } = entries[i];
+
+      while ((currentTime + index) % value !== 0) {
+        currentTime = currentTime + step;
+      }
+      step = step * value;
+    }
+    return currentTime;
+  }, [buses]);
 
   return (
     <Row>
@@ -46,7 +91,7 @@ function Thirteen() {
             <h3>Part 1</h3>
           </Col>
           <Col>
-            <h4> </h4>
+            <h4>First Bus Times Wait Time</h4>
             <h5>{resultOne}</h5>
           </Col>
           <Col>
@@ -60,7 +105,7 @@ function Thirteen() {
             <h3>Part 2</h3>
           </Col>
           <Col>
-            <h4> </h4>
+            <h4>Shuttle Company Contest Answer</h4>
             <h5>{resultTwo}</h5>
           </Col>
           <Col>
