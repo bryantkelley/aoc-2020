@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHollyBerry, faGlassWhiskey } from '@fortawesome/free-solid-svg-icons';
+import { faGlassWhiskey } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Two() {
