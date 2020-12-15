@@ -9,7 +9,40 @@ function Fourteen() {
 
   useEffect(() => {
     async function getEntries() {
-      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then((arr) => {
+      fetch(raw).then(r => r.text()).then((text) => {
+        const result = [];
+        let mask = [];
+        const lines = text.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          if (line.startsWith('mask')) {
+            mask = line.substring(7).split('');
+          } else if (line.startsWith('mem')) {
+            const address = line.split('[')[1].split(']')[0];
+            const valueArray = `${parseInt(line.split(' = ')[1], 10).toString(2)}`.split('');
+            const maskedValueArray = [];
+
+            for (let j = 0; j < mask.length; j++) {
+              if (mask[mask.length - j - 1] !== 'X') {
+                maskedValueArray[mask.length - j - 1]= mask[mask.length - j - 1];
+              } else {
+                maskedValueArray[mask.length - j - 1] = valueArray[valueArray.length - j - 1] ?? '0';
+              }
+            }
+
+            result.push({
+              maskArray: mask,
+              mask: mask.reduce((acc, cur) => `${acc}${cur}`),
+              address,
+              valueArray,
+              maskedValueArray,
+              value: parseInt(valueArray.reduce((acc, cur) => `${acc}${cur}`), 2),
+              maskedValue: parseInt(maskedValueArray.reduce((acc, cur) => `${acc}${cur}`), 2),
+            });
+          }
+        }
+        return result;
+      }).then((arr) => {
         setEntries(arr);
       });
     }
@@ -24,6 +57,12 @@ function Fourteen() {
       return '';
     }
 
+    const memory = [];
+    entries.forEach((entry) => {
+      memory[entry.address] = entry.maskedValue;
+    });
+
+    return memory.reduce((acc, cur) => acc + cur);
   }, [entries]);
 
   const resultTwo = useMemo(() => {
