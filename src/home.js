@@ -1,9 +1,10 @@
-import React from 'react';
-import { Col, Row } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Alert, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTree } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
+  const [showAlert, setShowAlert] = useState(true);
   return (
     <Row>
       <Col>
@@ -12,7 +13,15 @@ function Home() {
           {' '}
           Bryant's Advent of Code 2020
         </h1>
-        <h5>By the end, this site may turn your phone into a hand warmer.</h5>
+        <Alert
+          variant="danger"
+          show={showAlert}
+          dismissible
+          transition={false}
+          onClose={() => setShowAlert(false)}
+        >
+          By the end, this site may turn your phone into a hand warmer.
+        </Alert>
       </Col>
     </Row>
   );

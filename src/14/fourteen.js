@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSnowflake, faGlassWhiskey } from '@fortawesome/free-solid-svg-icons';
+import { faHollyBerry } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Fourteen() {
@@ -54,7 +54,7 @@ function Fourteen() {
 
       for (let j = 0; j < maskArray.length; j++) {
         if (maskArray[maskArray.length - j - 1] !== 'X') {
-          maskedValueArray[maskArray.length - j - 1]= maskArray[maskArray.length - j - 1];
+          maskedValueArray[maskArray.length - j - 1] = maskArray[maskArray.length - j - 1];
         } else {
           maskedValueArray[maskArray.length - j - 1] = valueArray[valueArray.length - j - 1] ?? '0';
         }
@@ -116,43 +116,36 @@ function Fourteen() {
   }, [entries]);
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Fourteen</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4> </h4>
-            <h5>{resultOne}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faSnowflake} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4> </h4>
-            <h5>{resultTwo}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faGlassWhiskey} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Fourteen '}
+          <FontAwesomeIcon icon={faHollyBerry} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{resultOne}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{resultTwo}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 

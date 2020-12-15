@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSleigh, faTree } from '@fortawesome/free-solid-svg-icons';
+import { faSnowman } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Twelve() {
@@ -23,7 +23,7 @@ function Twelve() {
     if (!entries.length) {
       return '';
     }
-    
+
     // directions => ['east', 'south', 'west', 'north']
     let direction = 0;
     let x = 0; // east/west distance
@@ -49,7 +49,7 @@ function Twelve() {
       }
       if (action === 'L') {
         // Turn Left
-        const difference = direction - (parseInt(value /90) % 4);
+        const difference = direction - (parseInt(value / 90) % 4);
         direction = difference < 0 ? 4 + difference : difference;
 
       }
@@ -81,7 +81,7 @@ function Twelve() {
     if (!entries.length) {
       return '';
     }
-    
+
     let x = 0; // east/west distance
     let y = 0; // north/south distance
     let wx = 10;
@@ -107,7 +107,7 @@ function Twelve() {
       }
       if (action === 'L') {
         // Rotate Anti-Clockwise
-        const difference = Math.abs(parseInt(value /90) % 4);
+        const difference = Math.abs(parseInt(value / 90) % 4);
         if (difference === 1) {
           const oldWX = wx;
           wx = -wy;
@@ -123,7 +123,7 @@ function Twelve() {
       }
       if (action === 'R') {
         // Rotate Clockwise
-        const difference = Math.abs(parseInt(value /90) % 4);
+        const difference = Math.abs(parseInt(value / 90) % 4);
         if (difference === 3) {
           const oldWX = wx;
           wx = -wy;
@@ -148,43 +148,36 @@ function Twelve() {
   }, [entries]);
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Twelve</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4>Distance from Start</h4>
-            <h5>{resultOne}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faSleigh} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4>Distance from Start</h4>
-            <h5>{resultTwo}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faTree} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Twelve '}
+          <FontAwesomeIcon icon={faSnowman} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{resultOne}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{resultTwo}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 

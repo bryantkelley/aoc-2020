@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGift, faGlassCheers } from '@fortawesome/free-solid-svg-icons';
+import { faSnowflake } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Eleven() {
@@ -207,43 +207,36 @@ function Eleven() {
   }, [entries]);
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Eleven</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4>Estimated Available Seats</h4>
-            <h5>{resultOne}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faGift} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4>Actual Available Seats</h4>
-            <h5>{resultTwo}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faGlassCheers} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Eleven '}
+          <FontAwesomeIcon icon={faSnowflake} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{resultOne}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{resultTwo}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 

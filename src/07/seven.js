@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSleigh, faCandyCane } from '@fortawesome/free-solid-svg-icons';
+import { faGift } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Seven() {
@@ -16,8 +16,8 @@ function Seven() {
           const bag = row[0].substr(0, row[0].length - 5);
           const rules = row[1].substr(0, row[1].length - 1).split(', ').map((item) => {
             const [count, colorOne, colorTwo] = item.split(' ');
-              return {
-                count,
+            return {
+              count,
               color: colorOne + ' ' + colorTwo,
             };
           }).filter((rule) => rule.count !== 'no');
@@ -97,43 +97,36 @@ function Seven() {
   }, [entries]);
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Seven</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4>Total Bag Colors</h4>
-            <h5>{totalBags.length}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faSleigh} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4>Total Bags Inside</h4>
-            <h5>{insideBags}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faCandyCane} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Seven '}
+          <FontAwesomeIcon icon={faGift} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{totalBags.length}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{insideBags}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 

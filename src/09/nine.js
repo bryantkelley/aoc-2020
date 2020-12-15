@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTree, faHollyBerry } from '@fortawesome/free-solid-svg-icons';
+import { faTree } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Nine() {
@@ -88,43 +88,36 @@ function Nine() {
   });
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Nine</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4>Invalid Number</h4>
-            <h5>{invalidNumber}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faTree} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4>Weakness</h4>
-            <h5>{weakness}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faHollyBerry} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Nine '}
+          <FontAwesomeIcon icon={faTree} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{invalidNumber}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{weakness}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 

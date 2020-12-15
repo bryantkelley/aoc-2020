@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCandyCane, faMugHot } from '@fortawesome/free-solid-svg-icons';
+import { faCandyCane } from '@fortawesome/free-solid-svg-icons';
 import raw from './input.txt';
 
 function Four() {
@@ -94,43 +94,36 @@ function Four() {
   }), [validPassportsOne]);
 
   return (
-    <Row>
-      <Col>
-        <Row>
-          <Col>
-            <h2>Day Four</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 1</h3>
-          </Col>
-          <Col>
-            <h4>Valid Count</h4>
-            <h5>{validPassportsOne.length}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faCandyCane} />
-            </h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h3>Part 2</h3>
-          </Col>
-          <Col>
-            <h4>Valid Count</h4>
-            <h5>{validPassportsTwo.length}</h5>
-          </Col>
-          <Col>
-            <h4>
-              <FontAwesomeIcon icon={faMugHot} />
-            </h4>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <Card bg="danger" text="light">
+      <Card.Header className="text-center">
+        <h2>
+          {'Day Four '}
+          <FontAwesomeIcon icon={faCandyCane} />
+        </h2>
+      </Card.Header>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 1</h3>
+            </Col>
+            <Col>
+              <h4>{validPassportsOne.length}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+        <ListGroup.Item variant="danger">
+          <Row>
+            <Col>
+              <h3>Part 2</h3>
+            </Col>
+            <Col>
+              <h4>{validPassportsTwo.length}</h4>
+            </Col>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Card>
   );
 }
 
