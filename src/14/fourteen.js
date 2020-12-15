@@ -97,50 +97,11 @@ function Fourteen() {
       return { value, addresses: output.map(out => parseInt(out, 2)) };
     });
 
-    console.log(inst);
-
-    const total = inst.length;
-    const half = total / 2;
-    const quarter = half / 2;
-
     const memory = {};
 
-    for (let i = 0; i < quarter; i++) {
+    for (let i = 0; i < inst.length; i++) {
       const { value, addresses } = inst[i];
-      for (let j = 0; j < addresses.length / 2; j++) {
-        memory[addresses[j]] = value;
-      }
-      for (let j = addresses.length / 2; j < addresses.length; j++) {
-        memory[addresses[j]] = value;
-      }
-    }
-
-    for (let i = quarter; i < half; i++) {
-      const { value, addresses } = inst[i];
-      for (let j = 0; j < addresses.length / 2; j++) {
-        memory[addresses[j]] = value;
-      }
-      for (let j = addresses.length / 2; j < addresses.length; j++) {
-        memory[addresses[j]] = value;
-      }
-    }
-
-    for (let i = half; i < half + quarter; i++) {
-      const { value, addresses } = inst[i];
-      for (let j = 0; j < addresses.length / 2; j++) {
-        memory[addresses[j]] = value;
-      }
-      for (let j = addresses.length / 2; j < addresses.length; j++) {
-        memory[addresses[j]] = value;
-      }
-    }
-
-    for (let i = half + quarter; i < total; i++) {
-      const { value, addresses } = inst[i];
-      for (let j = 0; j < addresses.length / 2; j++) {
-        memory[addresses[j]] = value;
-      }
-      for (let j = addresses.length / 2; j < addresses.length; j++) {
+      for (let j = 0; j < addresses.length; j++) {
         memory[addresses[j]] = value;
       }
     }
