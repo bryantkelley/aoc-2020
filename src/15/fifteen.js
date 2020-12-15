@@ -1,37 +1,62 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSleigh } from '@fortawesome/free-solid-svg-icons';
-import raw from './input.txt';
 
 function Fifteen() {
-  const [entries, setEntries] = useState([]);
+  const [resultOne, setResultOne] = useState('');
+  const [resultTwo, setResultTwo] = useState('');
 
   useEffect(() => {
-    async function getEntries() {
-      fetch(raw).then(r => r.text()).then(text => text.split('\n')).then((arr) => {
-        setEntries(arr);
+    function getResult() {
+      const memory = [8, 0, 17, 4, 1, 12];
+
+      while (memory.length < 2020) {
+        const currentIndex = memory.length - 1;
+        const lastNumber = memory[currentIndex];
+        const lastIndex = memory.slice(0, -1).lastIndexOf(lastNumber);
+        if (lastIndex >= 0) {
+          memory.push(currentIndex - lastIndex);
+        } else {
+          memory.push(0);
+        }
+      }
+
+      setResultOne(memory[2019]);
+    }
+
+    if (resultOne === '') {
+      getResult();
+    }
+  });
+
+  useEffect(() => {
+    function getResult() {
+      const memory = [8, 0, 17, 4, 1, 12];
+      const lastTime = {};
+      memory.forEach((value, index) => {
+        lastTime[value] = index;
       });
+
+      while (memory.length < 30000000) {
+        const currentIndex = memory.length - 1;
+        const lastNumber = memory[currentIndex];
+        const lastIndex = lastTime[lastNumber] ?? -1;
+        if (lastIndex >= 0 && lastIndex !== currentIndex) {
+          memory.push(currentIndex - lastIndex);
+        } else {
+          memory.push(0);
+        }
+        lastTime[lastNumber] = currentIndex;
+      }
+
+      setResultTwo(memory[29999999]);
     }
 
-    if (!entries.length) {
-      getEntries();
+    if (resultOne === '') {
+      getResult();
     }
-  }, [entries]);
-
-  const resultOne = useMemo(() => {
-    if (!entries.length) {
-      return '';
-    }
-
-  }, [entries]);
-
-  const resultTwo = useMemo(() => {
-    if (!entries.length) {
-      return '';
-    }
-    
-  }, [entries]);
+  });
 
   return (
     <Card bg="danger" text="light">
