@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+
+.fixed-bottom-padding {
+  margin-bottom: 4rem;
+}

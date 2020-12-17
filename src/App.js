@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, CardColumns, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, CardColumns, Container, Nav, Navbar } from 'react-bootstrap';
+import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnowflake, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Home from './home';
@@ -78,35 +79,8 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Container fluid>
+      <Container fluid className="fixed-bottom-padding">
         <Home />
-        <Row className="text-center pb-3">
-          <Col>
-            <ButtonGroup size="lg">
-              <Button
-                variant="danger"
-                disabled={all || day === 0}
-                onClick={() => setDay(day - 1)}
-              >
-                <FontAwesomeIcon icon={faMinus} />
-              </Button>
-              <Button
-                variant={'danger'}
-                active={all}
-                onClick={() => setAll(!all)}
-              >
-                {all ? 'All' : day + 1}
-              </Button>
-              <Button
-                variant="danger"
-                disabled={all || day === days.length - 1}
-                onClick={() => setDay(day + 1)}
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </Button>
-            </ButtonGroup>
-          </Col>
-        </Row>
         {!all && days[day].component}
         {all && (
           <CardColumns>
@@ -118,6 +92,31 @@ function App() {
           </CardColumns>
         )}
       </Container>
+      <Navbar bg="danger" variant="dark" fixed="bottom">
+        <ButtonGroup size="lg" className="ml-auto mr-auto">
+          <Button
+            variant="outline-light"
+            disabled={all || day === 0}
+            onClick={() => setDay(day - 1)}
+          >
+            <FontAwesomeIcon icon={faMinus} />
+          </Button>
+          <Button
+            variant={'outline-light'}
+            active={all}
+            onClick={() => setAll(!all)}
+          >
+            {all ? 'All' : day + 1}
+          </Button>
+          <Button
+            variant="outline-light"
+            disabled={all || day === days.length - 1}
+            onClick={() => setDay(day + 1)}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </Button>
+        </ButtonGroup>
+      </Navbar>
     </div>
   );
 }
