@@ -20,7 +20,7 @@ function Home() {
           transition={false}
           onClose={() => setShowAlert(false)}
         >
-          By the end, this site may turn your phone into a hand warmer.
+          Use minus and plus buttons to navigate between days. Tap the number to turn your phone into a hand warmer.
         </Alert>
       </Col>
     </Row>
