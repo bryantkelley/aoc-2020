@@ -48,11 +48,11 @@ function Four() {
   }, [passports]);
 
   const validPassportsOne = useMemo(() => passports.filter((p) => {
-    if (p.byr && p.iyr && p.eyr && p.hgt && p.hcl && p.ecl && p.pid) {
-      return true;
-    }
-    return false;
-  }), [passports]);
+      if (p.byr && p.iyr && p.eyr && p.hgt && p.hcl && p.ecl && p.pid) {
+        return true;
+      }
+      return false;
+    }), [passports]);
 
   const validPassportsTwo = useMemo(() => validPassportsOne.filter((p) => {
     const validBirthYear = 1920 <= p.byr && p.byr <= 2002;
@@ -93,6 +93,9 @@ function Four() {
     return false;
   }), [validPassportsOne]);
 
+  const resultOne = useMemo(() => validPassportsOne.length ? validPassportsOne.length : '', [validPassportsOne]);
+  const resultTwo = useMemo(() => validPassportsTwo.length ? validPassportsTwo.length : '', [validPassportsTwo]);
+
   return (
     <Card bg="danger" text="light">
       <Card.Header className="text-center">
@@ -108,7 +111,7 @@ function Four() {
               <h3>Part 1</h3>
             </Col>
             <Col>
-              <h4>{validPassportsOne.length}</h4>
+              <h4>{resultOne}</h4>
             </Col>
           </Row>
         </ListGroup.Item>
@@ -118,7 +121,7 @@ function Four() {
               <h3>Part 2</h3>
             </Col>
             <Col>
-              <h4>{validPassportsTwo.length}</h4>
+              <h4>{resultTwo}</h4>
             </Col>
           </Row>
         </ListGroup.Item>

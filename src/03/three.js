@@ -22,6 +22,10 @@ function Three() {
   }, [entries]);
 
   const treesHitOne = useMemo(() => {
+    if (!entries.length) {
+      return '';
+    }
+
     let hitCount = 0;
     const slope = { x: 3, y: 1 };
     for (let i = 0; i < entries.length; i = i + slope.y) {
@@ -32,35 +36,30 @@ function Three() {
     return hitCount;
   }, [entries]);
 
-  const treesHitTwo = useMemo(() => [
-    { x: 1, y: 1 },
-    { x: 3, y: 1 },
-    { x: 5, y: 1 },
-    { x: 7, y: 1 },
-    { x: 1, y: 2 },
-  ].map((s, si) => {
-    let hitCount = 0;
-    let missCount = 0;
-    for (let i = 0; i < entries.length; i = i + s.y) {
-      if (entries[i].values[(s.x * i / s.y) % entries[i].values.length] === '#') {
-        hitCount = hitCount + 1;
-      } else {
-        missCount = missCount + 1;
-      }
-    }
-    return { hitCount, missCount, index: si, slope: s };
-  }), [entries]);
-
   const resultTwo = useMemo(() => {
-    if (treesHitTwo.length) {
-      let result = 1;
-      treesHitTwo.forEach((th) => {
-        result = result * th.hitCount;
-      });
-      return result;
+    if (!entries.length) {
+      return '';
     }
-    return '';
-  }, [treesHitTwo]);
+
+    return [
+      { x: 1, y: 1 },
+      { x: 3, y: 1 },
+      { x: 5, y: 1 },
+      { x: 7, y: 1 },
+      { x: 1, y: 2 },
+    ].map((s, si) => {
+      let hitCount = 0;
+      let missCount = 0;
+      for (let i = 0; i < entries.length; i = i + s.y) {
+        if (entries[i].values[(s.x * i / s.y) % entries[i].values.length] === '#') {
+          hitCount = hitCount + 1;
+        } else {
+          missCount = missCount + 1;
+        }
+      }
+      return { hitCount, missCount, index: si, slope: s };
+    }).reduce((acc, cur) => acc * cur.hitCount, 1);
+  }, [entries]);
 
   return (
     <Card bg="danger" text="light">

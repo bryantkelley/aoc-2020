@@ -49,6 +49,9 @@ function Two() {
     return false;
   }), [entries]);
 
+  const resultOne = useMemo(() => validPasswordsOne.length ? validPasswordsOne.length : '', [validPasswordsOne]);
+  const resultTwo = useMemo(() => validPasswordsTwo.length ? validPasswordsTwo.length : '', [validPasswordsTwo]);
+
   return (
     <Card bg="danger" text="light">
       <Card.Header className="text-center">
@@ -64,7 +67,7 @@ function Two() {
               <h3>Part 1</h3>
             </Col>
             <Col>
-              <h4>{validPasswordsOne.length}</h4>
+              <h4>{resultOne}</h4>
             </Col>
           </Row>
         </ListGroup.Item>
@@ -74,7 +77,7 @@ function Two() {
               <h3>Part 2</h3>
             </Col>
             <Col>
-              <h4>{validPasswordsTwo.length}</h4>
+              <h4>{resultTwo}</h4>
             </Col>
           </Row>
         </ListGroup.Item>
